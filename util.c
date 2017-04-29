@@ -1,8 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "defines.h"
+#include "util.h"
 
-/**
-    Ordena com quick sort os indivíduos da população de acordo com a avaliação:
-**/
+
+void printg(int **geracao)
+{
+    int i,j;
+    // PRINT POPULAÇÃO:
+    printf("\n\n---------------------GERACAO------------------------\n");
+    //printf("SOMA AVAL: %i\n",somaAvaliacao);
+    printf("INDEX\tIND.\t\tAVAL.\t\tF.A.\n");
+    for(i=0;i<TAM_GERACAO_TOTAL;i++)
+    {
+        printf("[%i]:\t",i);
+        for(j = 0;j<TAM_INDIVIDUO;j++)
+        {
+            printf("%i",geracao[i][j]);
+        }
+        printf("\t[%i]\t\t[%i]\n",geracao[i][AVAL],geracao[i][FA]);
+    }
+
+}
+
 int partition(int **geracao, int l, int r)
 {
     int *t;
@@ -26,6 +46,10 @@ int partition(int **geracao, int l, int r)
    geracao[r] = t;
    return i+1;
 }
+
+/**
+    Ordena com quick sort os indivíduos da população de acordo com a avaliação:
+**/
 void quickSort(int **geracao, int l, int r)
 {
    int j;
@@ -51,3 +75,6 @@ int ConcatenaArray(int* arr, int len)
     }
     return result;
 }
+
+
+

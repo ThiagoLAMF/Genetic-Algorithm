@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "crossover.h"
 #include "defines.h"
 /**
     Faz mutação em uma das posições do indíviduo.
@@ -66,6 +67,8 @@ void CrossOverSimples(int* pai1,int* pai2,int pontoCrossOver,int* filho1,int* fi
     Gera dois filhos com crossover nos pontos especificados
     N = numero de pontos no array *pontosCrossOver
     O array *pontosCrossOver deve estar ordenado
+
+    TODO: Retirar alocação
 **/
 int **CrossOverMultiplo(int* pai1,int* pai2,int *pontosCrossOver,int n)
 {

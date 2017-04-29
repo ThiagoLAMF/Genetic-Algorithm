@@ -1,3 +1,3 @@
-void CalculaFrequenciaAcumulada(int **geracao,int somaAvaliacao);
-int SelecionaRoleta(int **geracao,int somaAvaliacao);
+void CalculaFrequenciaAcumulada(int **geracao);
+int SelecionaRoleta(int **geracao);
 int SelecionaTorneio(int **geracao,int tamTorneio);

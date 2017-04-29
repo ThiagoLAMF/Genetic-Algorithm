@@ -1,19 +1,27 @@
 #include "defines.h"
+#include "selecao.h"
 #include <inttypes.h>
 #include <stdlib.h>
 
 /**
     Calcula a frequencia acumulada e coloca na posição [FA] do vetor.
 **/
-void CalculaFrequenciaAcumulada(int **geracao,int somaAvaliacao)
+void CalculaFrequenciaAcumulada(int **geracao)
 {
     int i;
     int freq = 0;
 
-    for(i=0;i<TAM_GERACAO;i++)
+    for(i=0;i<TAM_GERACAO_TOTAL;i++)
     {
-        freq += geracao[i][AVAL];
-        geracao[i][FA] = freq;
+        if(i < TAM_GERACAO)
+        {
+            freq += geracao[i][AVAL];
+            geracao[i][FA] = freq;
+        }
+        else
+        {
+            geracao[i][FA] = -1;
+        }
     }
 }
 
@@ -21,8 +29,11 @@ void CalculaFrequenciaAcumulada(int **geracao,int somaAvaliacao)
     Seleciona um individuo baseado no método da Roleta e retorna o índice.
     É necessário que a Frequencia Acumulada esteja calculada na posicao [FA].
 **/
-int SelecionaRoleta(int **geracao,int somaAvaliacao)
+int SelecionaRoleta(int **geracao)
 {
+    int somaAvaliacao;
+    somaAvaliacao = geracao[TAM_GERACAO][FA];//Como a FQ. Acumulada já está calculada, a soma está no último elemento da geracao
+
     int i;
     //int rdm = rand() % somaAvaliacao; // Gera um número aleatório entre 0 e somaAvaliacao
     uint64_t rdm = (rand() * RAND_MAX) % somaAvaliacao; //VERIFICAR GERAÇÃO

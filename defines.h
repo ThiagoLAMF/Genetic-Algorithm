@@ -4,7 +4,7 @@
 #define TAM_GERACAO_TOTAL 150 //TAM_GERACAO + FILHOS (DEVE SER PAR)
 #define N_GERACOES 100
 
-enum individio
+enum individuo
 {
     S,E,N,D,M,O,R,Y,AVAL,FA,PORC
 };
