@@ -41,16 +41,15 @@ int main()
             int pontoCrossOver = rand() % TAM_INDIVIDUO; //Sorteio ponto Crossover
             //CrossOverSimples(geracao[pai1],geracao[pai2],pontoCrossOver,geracao[TAM_GERACAO + i],geracao[TAM_GERACAO + (i+1)] );
             CrossOverCiclico(geracao[pai1],geracao[pai2],geracao[TAM_GERACAO + i],geracao[TAM_GERACAO + (i+1)] );
-             getchar();
             //printf("\n[CROSSOVER] %i \tX %i \tPOS: %i",pai1,pai2,pontoCrossOver);
 
             //MUTAÇÃO
-            //Mutacao(geracao[TAM_GERACAO + i]);
-            //Mutacao(geracao[TAM_GERACAO + (i+1)] );
+            Mutacao(geracao[TAM_GERACAO + i]);
+            Mutacao(geracao[TAM_GERACAO + (i+1)] );
 
         }
-        printg(geracao);
-        getchar();
+        //rprintg(geracao);
+        //getchar();
         //SELECIONA MELHORES:
         quickSort(geracao, 0,TAM_GERACAO_TOTAL-1);
         //CalculaFrequenciaAcumulada(geracao); //Calcula FREQ para seleção. //METODO ROLETA
