@@ -46,13 +46,13 @@ int* GeraIndividuo()
         ind[i] = -1;
 
     i = 0;
-    while(i < TAM_INDIVIDUO)
+    while(i < TAM_INDIVIDUO_TOTAL)
     {
         int n = rand() % 10; //Gera número aleatório.
         int flagExiste = 0;
         int j;
 
-        for(j=0;j<TAM_INDIVIDUO;j++) //Verifica se o número gerado não está no array.
+        for(j=0;j<TAM_INDIVIDUO_TOTAL;j++) //Verifica se o número gerado não está no array.
         {
             if(ind[j] == n) flagExiste = 1;
         }

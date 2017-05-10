@@ -14,7 +14,7 @@ void printg(int **geracao)
     for(i=0;i<TAM_GERACAO_TOTAL;i++)
     {
         printf("[%i]:\t",i);
-        for(j = 0;j<TAM_INDIVIDUO;j++)
+        for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
         {
             printf("%i",geracao[i][j]);
         }

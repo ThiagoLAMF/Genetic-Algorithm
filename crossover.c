@@ -2,6 +2,71 @@
 #include <stdio.h>
 #include "crossover.h"
 #include "defines.h"
+#include "populacao.h"
+
+
+/**
+
+
+**/
+void CrossOverCiclico(int* pai1,int* pai2,int* filho1,int* filho2)
+{
+    int i,j;
+    int tam_ciclo = 1; //Ciclo começa com tamanho 1
+    int *ciclo = (int *) malloc(sizeof(int));
+    if(ciclo == NULL) return;
+
+    int posAtual = 0; //posAtual do ciclo
+    ciclo[0] = pai1[posAtual];
+    int flagCiclo = 0;
+    while(!flagCiclo)
+    {
+        int elementoPai2 = pai2[posAtual]; //desce no pai2
+        //Verifica se o ciclo foi completo
+        if(elementoPai2 == ciclo[0])
+        {
+            flagCiclo = 1;
+            break;
+        }
+
+        //Adiciona elemento no ciclo
+        tam_ciclo++;
+        ciclo = (int*) realloc(ciclo,sizeof(int)*tam_ciclo); //Realoca vetor
+        ciclo[tam_ciclo-1] = pai2[posAtual];
+
+        //procura o elemento em pai1
+        for(i=0;i<TAM_INDIVIDUO_TOTAL;i++)
+        {
+            if(elementoPai2 == pai1[i])
+            {
+                posAtual = i;
+                break;
+            }
+        }
+    }
+
+    //debug
+    printf("\n\nP1:\n");
+    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
+    {
+        printf("%i",pai1[j]);
+    }
+    printf("\nP2:\n");
+    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
+    {
+        printf("%i",pai2[j]);
+    }
+
+    //ciclo:
+    printf("\n\nCiclo:\n");
+    for(j = 0;j<tam_ciclo;j++)
+    {
+        printf("%d ",ciclo[j]);
+    }
+
+}
+
+
 /**
     Faz mutação em uma das posições do indíviduo.
 **/
@@ -25,9 +90,14 @@ void Mutacao(int *ind)
         if(!flagExiste) //Se o número não está no array.
         {
             ind[pontoMutacao] = n;
+            printf("\n[MUTACAO]: P: %i N: gv%i",pontoMutacao,n);
             flagGerou = 1;
         }
     }
+    int i;
+    printf("\n[MUTACAO]: ");
+    for(i=0;i<TAM_INDIVIDUO;i++)
+        printf("%i",ind[i]);
 
 }
 /**
@@ -37,7 +107,7 @@ void CrossOverSimples(int* pai1,int* pai2,int pontoCrossOver,int* filho1,int* fi
 {
     int i = 0;
 
-    for(i = 0;i<TAM_INDIVIDUO;i++)
+    for(i = 0;i<TAM_INDIVIDUO_TOTAL;i++)
     {
         if(i <= pontoCrossOver)
         {

@@ -32,11 +32,11 @@ void CalculaFrequenciaAcumulada(int **geracao)
 int SelecionaRoleta(int **geracao)
 {
     int somaAvaliacao;
-    somaAvaliacao = geracao[TAM_GERACAO][FA];//Como a FQ. Acumulada já está calculada, a soma está no último elemento da geracao
+    somaAvaliacao = geracao[TAM_GERACAO-1][FA];//Como a FQ. Acumulada já está calculada, a soma está no último elemento da geracao
 
     int i;
     //int rdm = rand() % somaAvaliacao; // Gera um número aleatório entre 0 e somaAvaliacao
-    uint64_t rdm = (rand() * RAND_MAX) % somaAvaliacao; //VERIFICAR GERAÇÃO
+    uint64_t rdm = (rand() * RAND_MAX) % somaAvaliacao; //VERIFICAR
 
     //printf("\nRANDOM: %i",rdm);
 
