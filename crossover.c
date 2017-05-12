@@ -6,8 +6,7 @@
 
 
 /**
-    CrossOver Ciclico
-
+    Gera dois filhos usando CrossOver Ciclico
 **/
 void CrossOverCiclico(int* pai1,int* pai2,int* filho1,int* filho2)
 {
@@ -64,10 +63,6 @@ void CrossOverCiclico(int* pai1,int* pai2,int* filho1,int* filho2)
             filho2[i] = pai1[i];
         }
     }
-
-    CalculaAvaliacao(filho1);
-    CalculaAvaliacao(filho2);
-
 
     /*
     //debug

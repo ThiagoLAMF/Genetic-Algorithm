@@ -35,7 +35,7 @@ int CalculaAvaliacao(int *ind)
 }
 
 /**
-    Gera 8 números aleatórios únicos entre 0 e 9 e retorna.
+    Gera 10 números aleatórios únicos entre 0 e 9 e retorna.
 **/
 int* GeraIndividuo()
 {
