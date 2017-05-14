@@ -23,6 +23,19 @@ void printg(int **geracao)
 
 }
 
+void printind(int *ind)
+{
+    int j;
+    printf("[?]:\t");
+    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
+    {
+        printf("%i",ind[j]);
+    }
+    printf("\t[%i]\t\t[%i]\n",ind[AVAL],ind[FA]);
+
+
+}
+
 int partition(int **geracao, int l, int r)
 {
     int *t;
@@ -76,5 +89,32 @@ int ConcatenaArray(int* arr, int len)
     return result;
 }
 
+/**
+    Sobe os filhos na matriz
+    posFilho = posição do primeiro filho
+    posIni = índice da posição inicial de inserção
+**/
+void SobeFilhos(int **geracao,int posIni,int qtdFilhos,int posFilho)
+{
+    int i;
+
+    for(i=0;i<qtdFilhos;i++)
+    {
+        geracao[posIni] = geracao[posFilho];
+        posFilho++;
+        posIni++;
+    }
+}
+
+int VerificaMatriz(int **geracao)
+{
+    int i;
+
+    for(i=0;i<TAM_GERACAO_TOTAL;i++)
+    {
+        if(geracao[i][AVAL] == 0) return 1;
+    }
+    return 0;
+}
 
 

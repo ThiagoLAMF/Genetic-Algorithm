@@ -4,11 +4,103 @@
 #include "defines.h"
 #include "util.h"
 
+/**
+//DONALD GERALD ROBERT
+**/
+/*int CalculaAvaliacao(int *ind)
+{
+    //Calcula SEND:
+    int eatArray[6] = {ind[D], ind[O], ind[N],ind[A],ind[L],ind[D]};
+    int eat = ConcatenaArray(eatArray,6);
 
+    //Calcula MORE:
+    int thatArray[6] = {ind[G], ind[E], ind[R], ind[A],ind[L],ind[D]};
+    int that = ConcatenaArray(thatArray,6);
+
+    //Calcula MONEY:
+    int appleArray[6] = {ind[R], ind[O], ind[B], ind[E], ind[R],ind[T]};
+    int apple = ConcatenaArray(appleArray,6);
+
+    int avaliacao = abs((eat+that)-apple);
+    ind[AVAL] = avaliacao;
+
+    return avaliacao;
+
+}*/
+/**
+//COCA COLA OASIS
+**/
+/*int CalculaAvaliacao(int *ind)
+{
+    //Calcula SEND:
+    int eatArray[4] = {ind[C], ind[O], ind[C],ind[A]};
+    int eat = ConcatenaArray(eatArray,4);
+
+    //Calcula MORE:
+    int thatArray[4] = {ind[C], ind[O], ind[L], ind[A]};
+    int that = ConcatenaArray(thatArray,4);
+
+    //Calcula MONEY:
+    int appleArray[5] = {ind[O], ind[A], ind[S], ind[I], ind[S]};
+    int apple = ConcatenaArray(appleArray,5);
+
+    int avaliacao = abs((eat+that)-apple);
+    ind[AVAL] = avaliacao;
+
+    return avaliacao;
+
+}*/
+/**
+//CROSS ROADS DANGER
+**/
+/*int CalculaAvaliacao(int *ind)
+{
+    //Calcula SEND:
+    int eatArray[5] = {ind[C], ind[R], ind[O],ind[S],ind[S]};
+    int eat = ConcatenaArray(eatArray,5);
+
+    //Calcula MORE:
+    int thatArray[5] = {ind[R], ind[O], ind[A], ind[D],ind[S]};
+    int that = ConcatenaArray(thatArray,5);
+
+    //Calcula MONEY:
+    int appleArray[6] = {ind[D], ind[A], ind[N], ind[G], ind[E], ind[R]};
+    int apple = ConcatenaArray(appleArray,6);
+
+    int avaliacao = abs((eat+that)-apple);
+    ind[AVAL] = avaliacao;
+
+    return avaliacao;
+
+}*/
+/**
+//EAT + THAT = APPLE
+**/
+/*int CalculaAvaliacao(int *ind)
+{
+    //Calcula SEND:
+    int eatArray[3] = {ind[E], ind[A], ind[T]};
+    int eat = ConcatenaArray(eatArray,3);
+
+    //Calcula MORE:
+    int thatArray[4] = {ind[T], ind[H], ind[A], ind[T]};
+    int that = ConcatenaArray(thatArray,4);
+
+    //Calcula MONEY:
+    int appleArray[5] = {ind[A], ind[P], ind[P], ind[L], ind[E]};
+    int apple = ConcatenaArray(appleArray,5);
+
+    int avaliacao = abs((eat+that)-apple);
+    ind[AVAL] = avaliacao;
+
+    return avaliacao;
+
+}*/
 /**
     Avalia um indivíduo com a equação: (SEND + MORE) - MONEY = AVALIACAO
     Melhor valor é o mais próximo de 0.
 **/
+
 int CalculaAvaliacao(int *ind)
 {
     //Calcula SEND:
@@ -63,10 +155,6 @@ int* GeraIndividuo()
         }
 
     }
-
-    /*printf("\nGerado: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",ind[i]);*/
     return ind;
 }
 int **GeraPopulacao(int *somaAvaliacao)
@@ -85,6 +173,8 @@ int **GeraPopulacao(int *somaAvaliacao)
         else //Aloca posição dos filhos
         {
             geracao[i] = (int*) malloc(sizeof(int)*TAM_TOTAL);
+            geracao[i][AVAL] = -1;
+            geracao[i][FA] = -1;
         }
 
     }

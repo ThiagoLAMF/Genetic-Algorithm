@@ -10,7 +10,7 @@
 **/
 void CrossOverCiclico(int* pai1,int* pai2,int* filho1,int* filho2)
 {
-    int i,j;
+    int i;
 
     int tam_ciclo = 1; //Ciclo começa com tamanho 1
     int *ciclo = (int *) malloc(sizeof(int));
@@ -63,45 +63,23 @@ void CrossOverCiclico(int* pai1,int* pai2,int* filho1,int* filho2)
             filho2[i] = pai1[i];
         }
     }
-
-    /*
-    //debug
-    printf("\n\nP1:\n");
-    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
-    {
-        printf("%i",pai1[j]);
-    }
-    printf("\nP2:\n");
-    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
-    {
-        printf("%i",pai2[j]);
-    }
-
-    //ciclo:
-    printf("\n\nCiclo:\n");
-    for(j = 0;j<tam_ciclo;j++)
-    {
-        printf("%d ",ciclo[j]);
-    }
-
-    //mascara:
-    printf("\n\nMask:\n");
-    for(j = 0;j<TAM_INDIVIDUO_TOTAL;j++)
-    {
-        printf("%d ",mascara[j]);
-    }
-
-    printf("\nFilho1: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",filho1[i]);
-
-    printf("\nFilho2: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",filho2[i]);*/
-
+    filho1[AVAL] = -1;
+    filho1[AVAL] = -1;
 }
 
+/**
+    Faz mutação em qtdInd indivíduos(Entre as posições dos filhos)
+**/
+void MutacaoFilhos(int **geracao,int qtdInd,int qtdFilhos)
+{
+    int i;
 
+    for(i=TAM_GERACAO;i<(TAM_GERACAO + qtdInd);i++)
+    {
+        int rdm = (rand() % (qtdFilhos)) + TAM_GERACAO;
+        Mutacao(geracao[rdm]);
+    }
+}
 /**
     Faz mutação em uma das posições do indíviduo.
 **/
@@ -116,31 +94,6 @@ void Mutacao(int *ind)
     ind[pontoMutacao2] = aux;
 
     CalculaAvaliacao(ind);
-    /*int valorAtual = ind[pontoMutacao];
-
-    int flagGerou = 0;
-
-    while(!flagGerou)
-    {
-        int n = rand() % 10; //Gera número aleatório.
-        int flagExiste = 0;
-        int j;
-
-        for(j=0;j<TAM_INDIVIDUO;j++) //Verifica se o número gerado não está no array.
-        {
-            if(n == valorAtual || ind[j] == n) flagExiste = 1;
-        }
-        if(!flagExiste) //Se o número não está no array.
-        {
-            ind[pontoMutacao] = n;
-            printf("\n[MUTACAO]: P: %i N: gv%i",pontoMutacao,n);
-            flagGerou = 1;
-        }
-    }
-    int i;
-    printf("\n[MUTACAO]: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",ind[i]);*/
 
 }
 /**
@@ -166,14 +119,6 @@ void CrossOverSimples(int* pai1,int* pai2,int pontoCrossOver,int* filho1,int* fi
 
     CalculaAvaliacao(filho1);
     CalculaAvaliacao(filho2);
-
-    /*printf("\nFilho1: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",filhos[0][i]);
-
-    printf("\nFilho2: ");
-    for(i=0;i<TAM_INDIVIDUO;i++)
-        printf("%i",filhos[1][i]);*/
 }
 
 /**
